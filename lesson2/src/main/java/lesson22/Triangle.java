@@ -24,6 +24,7 @@ public class Triangle implements Shape{
     }
 
     @Override
-    public void askShape() {
+    public String name() {
+        return "треугольник";
     }
 }

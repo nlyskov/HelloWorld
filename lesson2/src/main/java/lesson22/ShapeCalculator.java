@@ -28,6 +28,7 @@ public class ShapeCalculator {
 
                 Shape shape = new Triangle(side1, side2, side3);
 
+                System.out.println("Тип фигуры: " + shape.name());
                 System.out.println("Площадь: "+ shape.area());
                 System.out.println("Периметр "+ shape.perimetr());
             }
@@ -37,6 +38,7 @@ public class ShapeCalculator {
 
                     Shape shape = new Square(side);
 
+                    System.out.println("Тип фигуры: " + shape.name());
                     System.out.println("Площадь: "+ shape.area());
                     System.out.println("Периметр "+ shape.perimetr());
             }
@@ -48,6 +50,7 @@ public class ShapeCalculator {
 
                     Shape shape = new Rectangle(side1, side2);
 
+                    System.out.println("Тип фигуры: " + shape.name());
                     System.out.println("Площадь: "+ shape.area());
                     System.out.println("Периметр "+ shape.perimetr());
             }

@@ -18,7 +18,7 @@ public class Square implements Shape {
     }
 
     @Override
-    public void askShape() {
-
+    public String name() {
+        return "квадрат";
     }
 }
