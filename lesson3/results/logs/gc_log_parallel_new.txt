@@ -1,0 +1,23 @@
+[0.012s][warning][gc] -XX:+PrintGCDetails is deprecated. Will use -Xlog:gc* instead.
+[0.020s][info   ][gc] Using Parallel
+[15.005s][info   ][gc] GC(0) Pause Young (Allocation Failure) 30M->12M(123M) 19.294ms
+[53.809s][info   ][gc] GC(1) Pause Young (Allocation Failure) 44M->30M(123M) 37.330ms
+[147.732s][info   ][gc] GC(2) Pause Young (Allocation Failure) 62M->56M(123M) 44.458ms
+[281.843s][info   ][gc] GC(3) Pause Young (Allocation Failure) 89M->82M(123M) 42.738ms
+[282.017s][info   ][gc] GC(4) Pause Full (Ergonomics) 82M->45M(123M) 173.668ms
+[514.388s][info   ][gc] GC(5) Pause Young (Allocation Failure) 74M->62M(105M) 47.511ms
+[514.568s][info   ][gc] GC(6) Pause Full (Ergonomics) 62M->53M(114M) 180.333ms
+[649.863s][info   ][gc] GC(7) Pause Young (Allocation Failure) 84M->77M(114M) 19.630ms
+[650.024s][info   ][gc] GC(8) Pause Full (Ergonomics) 77M->62M(114M) 160.793ms
+[797.415s][info   ][gc] GC(9) Pause Young (Allocation Failure) 77M->70M(114M) 19.641ms
+[797.596s][info   ][gc] GC(10) Pause Full (Ergonomics) 70M->66M(114M) 181.029ms
+[949.897s][info   ][gc] GC(11) Pause Young (Allocation Failure) 81M->73M(114M) 25.034ms
+[950.082s][info   ][gc] GC(12) Pause Full (Ergonomics) 73M->69M(114M) 184.299ms
+[1111.799s][info   ][gc] GC(13) Pause Young (Allocation Failure) 84M->76M(114M) 19.536ms
+[1112.005s][info   ][gc] GC(14) Pause Full (Ergonomics) 76M->73M(114M) 205.966ms
+[1280.310s][info   ][gc] GC(15) Pause Full (Ergonomics) 87M->76M(114M) 195.509ms
+[1461.402s][info   ][gc] GC(16) Pause Full (Ergonomics) 90M->79M(114M) 208.178ms
+[1498.395s][info   ][gc] GC(17) Pause Young (Allocation Failure) 82M->80M(114M) 8.291ms
+[1498.616s][info   ][gc] GC(18) Pause Full (Ergonomics) 80M->79M(114M) 220.452ms
+[1498.616s][info   ][gc] GC(19) Pause Young (Allocation Failure) 79M->79M(114M) 0.414ms
+[1498.802s][info   ][gc] GC(20) Pause Full (Allocation Failure) 79M->79M(114M) 185.866ms

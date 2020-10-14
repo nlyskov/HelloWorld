@@ -4,17 +4,20 @@ import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws InterruptedException {
-        App.go(1000000);
+        App.go(10000);
     }
 
     private static void go( int amount) throws InterruptedException{
         var list = new ArrayList<Integer>();
         while (true){
             for (int i = 0; i < amount; i++) {
-                var b = Integer.valueOf(i);
-                list.add(b);
+                list.add(i);
             }
-            Thread.sleep(7000);
+            for (int i = 0; i < 5000; i++) {
+                list.remove(i);
+            }
+//            System.out.println(list);
+//            Thread.sleep(1000);
         }
     }
 }
