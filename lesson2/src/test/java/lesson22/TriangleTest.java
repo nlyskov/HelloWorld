@@ -1,6 +1,16 @@
 package lesson22;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Matchers.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,8 +27,13 @@ class TriangleTest {
         assertEquals(6, triangle.area());
     }
 
+    @DisplayName("Имя фигуры: Треугольник")
     @Test
     void name() {
-        assertEquals("треугольник", triangle.name());
+        String result = triangle.name();
+        assertThat(result)
+                .isNotEmpty()
+                .endsWith( "ольник" );
+
     }
 }
