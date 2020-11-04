@@ -11,7 +11,8 @@
     <module>hello2</module>
     <module>lesson2</module>
     <module>lesson3</module>
-	<module>lesson4</module>   
+    <module>lesson4</module>
+    <module>lesson4-doubly-linked-array</module>	
   </modules>
       
 	<properties>
