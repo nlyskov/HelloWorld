@@ -16,17 +16,16 @@ public class ClassTest {
 
     @Before
     public void methodBefore() {
-        System.out.printf("Секция Before для инстанса: %s%n", instanceName);
+        System.out.printf("Секция Before для: %s%n", instanceName);
     }
 
     @Test
     public void methodTest1() {
         try {
-            System.out.printf("Результат запуска Test 1 для инстанса: %s равен: %s%n", instanceName, param1 > param2);
-            throw new RuntimeException();
+            System.out.printf("Результат запуска %s равен: %s%n", instanceName, param1 > param2);
         }
         catch (RuntimeException e) {
-            System.out.printf("Внимание! Test 1 упал с ошибкой %s для инстанса: %s%n", e, instanceName);
+            System.out.printf("Внимание! %s упал с ошибкой %s%n", instanceName, e);
             failedTestCounter++;
         }
     }
@@ -34,10 +33,11 @@ public class ClassTest {
     @Test
     public void methodTest2() {
         try {
-            System.out.printf("Результат запуска Test 2 для инстанса: %s равен: %s%n", instanceName, param1 < param2);
+            System.out.printf("Результат запуска %s равен: %s%n", instanceName, param1 < param2);
+            throw new RuntimeException();
         }
         catch (RuntimeException e) {
-            System.out.printf("Внимание! Test 2 упал с ошибкой %s для инстанса: %s%n", e, instanceName);
+            System.out.printf("Внимание! %s упал с ошибкой %s%n", instanceName, e);
             failedTestCounter++;
         }
     }
@@ -45,17 +45,17 @@ public class ClassTest {
     @Test
     public void methodTest3() {
         try {
-            System.out.printf("Результат запуска Test 3 для инстанса: %s равен: %s%n", instanceName, param1 < param2);
+            System.out.printf("Результат запуска %s равен: %s%n", instanceName, param1 < param2);
         }
         catch (RuntimeException e) {
-            System.out.printf("Внимание! Test 3 упал с ошибкой %s для инстанса: %s%n", e, instanceName);
+            System.out.printf("Внимание! %s упал с ошибкой %s%n", instanceName, e);
             failedTestCounter++;
         }
     }
 
     @After
     public int methodAfter() {
-        System.out.printf("Секция After для инстанса: %s%n", instanceName);
+        System.out.printf("Секция After для: %s%n", instanceName);
         return failedTestCounter;
     }
 
