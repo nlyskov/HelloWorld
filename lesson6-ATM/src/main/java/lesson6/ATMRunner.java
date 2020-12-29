@@ -35,14 +35,14 @@ public class ATMRunner {
                 // Внесение денег в банкомат
                 case 1:
                         System.out.println("Выберите, купюры какого номинала вы хотите добавить в банкомат: ");
-                        cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.cell_type.id, cell.cell_type.name);});
+                        cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.cellType.id, cell.cellType.name);});
                         int n1 = s.nextInt();
                         cellList.forEach(cell -> {
-                            if (cell.cell_type.id == n1) {
+                            if (cell.cellType.id == n1) {
                                 System.out.print("\nВведите количество купюр: ");
                                 int amount = s.nextInt();
                                 cell.get(amount);
-                                System.out.printf("\nЗачислено рублей: %s", amount*cell.cell_type.value);
+                                System.out.printf("\nЗачислено рублей: %s", amount*cell.cellType.value);
                             }
                         });
                         break;
@@ -50,15 +50,15 @@ public class ATMRunner {
                 // Снятие налички
                 case 2:
                     System.out.println("Выберите, купюры какого номинала вы хотите снять: ");
-                    cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.cell_type.id, cell.cell_type.name);});
+                    cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.cellType.id, cell.cellType.name);});
                     int n2 = s.nextInt();
                     cellList.forEach(cell -> {
-                        if (cell.cell_type.id == n2) {
+                        if (cell.cellType.id == n2) {
                             System.out.print("\nВведите количество купюр: ");
                             int amount = s.nextInt();
                                 boolean result = cell.give(amount);
                             if (result) {
-                                System.out.printf("\nСнято рублей: %s", amount * cell.cell_type.value);
+                                System.out.printf("\nСнято рублей: %s", amount * cell.cellType.value);
                             } else {
                                 System.out.println("Произошла ошибка! В ячейке не хватает купюр!");
                             }
