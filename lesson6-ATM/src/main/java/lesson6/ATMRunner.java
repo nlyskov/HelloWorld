@@ -1,18 +1,19 @@
 package lesson6;
 import static lesson6.CellValues.*;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ATMRunner {
     public static void main(String[] args) {
-        Cell cell_100 = new Cell(ONEHUNDRED.getName(), 10, ONEHUNDRED.getValue(), ONEHUNDRED.getId());
-        Cell cell_500 = new Cell(FIVEHUNDRED.getName(), 10, FIVEHUNDRED.getValue(), FIVEHUNDRED.getId());
-        Cell cell_1000 = new Cell(THOUSAND.getName(), 10, THOUSAND.getValue(), THOUSAND.getId());
-        Cell cell_5000 = new Cell(FIVETHOUSAND.getName(), 10, FIVETHOUSAND.getValue(), FIVETHOUSAND.getId());
+
+        Cell cell_100 = new Cell(10, ONEHUNDRED);
+        Cell cell_500 = new Cell(10, FIVEHUNDRED);
+        Cell cell_1000 = new Cell(10, THOUSAND);
+        Cell cell_5000 = new Cell(10, FIVETHOUSAND);
         List<Cell> cellList = new ArrayList<>();
+
         cellList.add(cell_100);
         cellList.add(cell_500);
         cellList.add(cell_1000);
@@ -34,14 +35,14 @@ public class ATMRunner {
                 // Внесение денег в банкомат
                 case 1:
                         System.out.println("Выберите, купюры какого номинала вы хотите добавить в банкомат: ");
-                        cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.id, cell.name);});
+                        cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.cell_type.id, cell.cell_type.name);});
                         int n1 = s.nextInt();
                         cellList.forEach(cell -> {
-                            if (cell.id == n1) {
+                            if (cell.cell_type.id == n1) {
                                 System.out.print("\nВведите количество купюр: ");
                                 int amount = s.nextInt();
                                 cell.get(amount);
-                                System.out.printf("\nЗачислено рублей: %s", amount*cell.value);
+                                System.out.printf("\nЗачислено рублей: %s", amount*cell.cell_type.value);
                             }
                         });
                         break;
@@ -49,18 +50,17 @@ public class ATMRunner {
                 // Снятие налички
                 case 2:
                     System.out.println("Выберите, купюры какого номинала вы хотите снять: ");
-                    cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.id, cell.name);});
+                    cellList.forEach(cell -> {System.out.printf("Нажмите %s для купюр %s%n", cell.cell_type.id, cell.cell_type.name);});
                     int n2 = s.nextInt();
                     cellList.forEach(cell -> {
-                        if (cell.id == n2) {
+                        if (cell.cell_type.id == n2) {
                             System.out.print("\nВведите количество купюр: ");
                             int amount = s.nextInt();
-                            if (cell.amount<amount){
-                                System.out.printf("\nОшибка!!! Запрашиваемая сумма: %s рублей не может быть выдана, так как в ячейке не хватает купюр данного номинала", amount*cell.value);
-                            }
-                            else {
-                                cell.give(amount);
-                                System.out.printf("\nСнято рублей: %s", amount*cell.value);
+                                boolean result = cell.give(amount);
+                            if (result) {
+                                System.out.printf("\nСнято рублей: %s", amount * cell.cell_type.value);
+                            } else {
+                                System.out.println("Произошла ошибка! В ячейке не хватает купюр!");
                             }
                         }
                     });

@@ -6,9 +6,9 @@ public enum CellValues {
     THOUSAND(1000, "1000 рублей", 3),
     FIVETHOUSAND(5000, "5000 рублей", 4);
 
-    private final int value;
-    private final String name;
-    private final int id;
+    public final int value;
+    public final String name;
+    public final int id;
 
     CellValues(int value, String name, int id) {
         this.value = value;
