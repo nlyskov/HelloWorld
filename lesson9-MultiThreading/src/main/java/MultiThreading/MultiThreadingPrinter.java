@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MultiThreadingPrinter {
     private static final String str = "1 2 3 4 5 6 7 8 9 10 9 8 7 6 5 4 3 2 1";
+    private String last = "Thread 2";
     public static void main(String[] args) throws InterruptedException {
         new MultiThreadingPrinter().go();
     }
@@ -11,21 +12,20 @@ public class MultiThreadingPrinter {
     synchronized private void inc() {
         String[] numbers = str.split(" ");
         for (String number : numbers) {
-            if (Thread.currentThread().getName().equals("Thread 1")) {
-                System.out.println("Текущий поток: '"+Thread.currentThread().getName()+"': "+number);
-            } else {
-                System.out.println("Текущий поток: '"+Thread.currentThread().getName()+"': "+number);
-            }
             try {
-                notify();
-                Thread.sleep( TimeUnit.MILLISECONDS.toMillis( 100 ) );
-                wait();
-            } catch (InterruptedException e) {
+                if (last.equals(Thread.currentThread().getName())) {
+                    wait();
+                }
+                System.out.println("Текущий поток: '"+Thread.currentThread().getName()+"': "+number);
+                last = Thread.currentThread().getName();
+                Thread.sleep( TimeUnit.MILLISECONDS.toMillis( 500 ) );
+                notifyAll();
+            }
+             catch (InterruptedException e) {
+                 Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
         }
-        Thread.currentThread().interrupt();
-        notifyAll();
     }
 
     private void go() throws InterruptedException {
