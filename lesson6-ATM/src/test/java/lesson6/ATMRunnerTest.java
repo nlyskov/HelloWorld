@@ -7,7 +7,7 @@ import static lesson6.CellValues.FIVEHUNDRED;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ATMRunnerTest {
-    Cell cell_500 = new Cell(FIVEHUNDRED.getName(), 10, FIVEHUNDRED.getValue(), FIVEHUNDRED.getId());
+    Cell cell_500 = new Cell(10, FIVEHUNDRED);
 
     @Test
     @DisplayName("Проверка баланса")

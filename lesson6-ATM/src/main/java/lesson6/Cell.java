@@ -1,30 +1,32 @@
 package lesson6;
 
-public class Cell implements CellInterface{
-    String name;
-    int amount;
-    int value;
-    int id;
 
-    public Cell(String name, int amount, int value, int id) {
-        this.name = name;
+class Cell implements CellInterface {
+    int amount;
+    CellValues cellType;
+
+    public Cell(int amount, CellValues cell_type) {
         this.amount = amount;
-        this.value = value;
-        this.id = id;
+        this.cellType = cell_type;
     }
 
     @Override
     public void get(int amount) {
-        this.amount = this.amount+amount;
+        this.amount = this.amount + amount;
     }
 
     @Override
-    public void give(int amount) {
-        this.amount = this.amount-amount;
+    public boolean give(int amount) {
+        boolean operationResult = false;
+        if (this.amount >= amount) {
+            this.amount = this.amount - amount;
+            operationResult = true;
+        }
+        return operationResult;
     }
 
     @Override
     public int count() {
-        return amount*value;
+        return amount * cellType.value;
     }
 }
