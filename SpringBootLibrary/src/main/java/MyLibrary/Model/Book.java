@@ -1,52 +1,39 @@
 package MyLibrary.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.relational.core.sql.In;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import lombok.*;
+
+import javax.persistence.*;
+import java.lang.ref.SoftReference;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "book")
 public class Book {
-    private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "book_name", nullable = false)
     private String name;
-    private String author;
-    private String genre;
 
-    public Book(Integer id, String name, String author, String genre) {
-        this.id = id;
-        this.name = name;
-        this.author = author;
+    @ManyToOne(targetEntity = Author.class) // много книг у одного автора
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-        this.genre = genre;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
+    @ManyToOne(targetEntity = Genre.class)  // много книг одного жанра
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
 }
 
 

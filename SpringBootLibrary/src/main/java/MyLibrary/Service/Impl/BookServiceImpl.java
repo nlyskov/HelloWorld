@@ -4,31 +4,24 @@ import MyLibrary.Dao.BookDao;
 import MyLibrary.Dao.Impl.BookDaoImpl;
 import MyLibrary.Model.Book;
 import MyLibrary.Service.BookService;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Transactional
+@Repository
 public class BookServiceImpl implements BookService {
 
-    private final BookDao bookDao = new BookDaoImpl();
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
-    public List<String> getAllBooksName() {
-        return bookDao.getAllBooks().stream()
-                .map(Book::getName)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public String getBookNameById(Integer id) {
-        return bookDao.getById(id)
-                .map(Book::getName)
-                .orElse("не найдено");
-    }
-
-    @Override
-    public Book addBook(Book book) {
-        bookDao.addBook(book);
-        return null;
+    public List<Book> getAllBooks() {
+        return em.createQuery("select s from Book s", Book.class)
+                .getResultList();
     }
 }
