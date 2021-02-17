@@ -1,4 +1,4 @@
-package MyLibrary.Model;
+package MyLibrary.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "comment")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

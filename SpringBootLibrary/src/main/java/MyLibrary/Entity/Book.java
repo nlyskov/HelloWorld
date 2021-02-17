@@ -1,30 +1,28 @@
-package MyLibrary.Model;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.relational.core.sql.In;
+package MyLibrary.Entity;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
-import lombok.*;
 
 import javax.persistence.*;
-import java.lang.ref.SoftReference;
-import java.util.List;
+import java.util.Optional;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "book")
 public class Book {
+
+    public Book(String name, Author author, Genre genre) {
+        this.name = name;
+        this.author = author;
+        this.genre = genre;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Book(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column(name = "book_name", nullable = false)
     private String name;
 
     @ManyToOne(targetEntity = Author.class) // много книг у одного автора
